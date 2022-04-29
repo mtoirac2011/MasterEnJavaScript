@@ -5,15 +5,15 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
-// Cargar archivos de rutas  
-var project_routes = require('./routes/project');
+// cargar archivos rutas
+//var project_routes = require('./routes/project');
 
-//middlewares
+// middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//CORS y Cabeceras: Permite manejar peticiones del Front al BAck End
-// Copiar este trozo de codigo y pegarlo
+// Configurar cabeceras y cors
+/*
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
@@ -21,9 +21,16 @@ app.use((req, res, next) => {
     res.header('Allow', 'GET, POST, OPTIONS, PUT, DELETE');
     next();
 });
+*/
 
-//Rutas
-app.use('/api', project_routes);
+// rutas
+//app.use('/api', project_routes);
+app.get('/test', (req, res) => {
+    res.status(200).send({
+        message: "Hola Mundo desde mi API NodeJs"
+    });
+});
 
-//Exportar
+
+// exportar
 module.exports = app;
